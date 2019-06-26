@@ -10,6 +10,7 @@ import mark from 'markdown-it-mark'
 import toc from 'markdown-it-toc-and-anchor'
 import katex from 'markdown-it-katex'
 import tasklists from 'markdown-it-task-lists'
+import container from 'markdown-it-container'
 
 export default {
   md: new markdownIt(),
@@ -148,6 +149,10 @@ export default {
       .use(mark)
       .use(katex, { "throwOnError": false, "errorColor": " #cc0000" })
       .use(tasklists, { enabled: this.taskLists })
+      .use(container)
+      .use(container, 'hljs-left') /* align left */
+      .use(container, 'hljs-center')/* align center */
+      .use(container, 'hljs-right')/* align right */
 
     if (this.emoji) {
       this.md.use(emoji)
